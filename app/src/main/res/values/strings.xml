@@ -9,4 +9,50 @@
     <string name ="news">اخبار</string>
     <string name ="ads">اعلانات</string>
     <string name ="maps">الخرائط</string>
+    <string name="change_city">اختر الجامعة</string>
+    <string-array name="ar">
+        <item>البلقاء المركز </item>
+        <item>مادبا</item>
+        <item>كلية الحصن الجامعية</item>
+        <item>كلية إربد الجامعية</item>
+        <item>كلية الزرقاء الجامعية</item>
+        <item>كلية الهندسة التكنولوجية</item>
+        <item>كلية عمان الجامعية للعلوم المالية والادارية</item>
+
+        <item>كلية الكرك الجامعية</item>
+        <item>كلية معان الجامعية</item>
+        <item>كلية الشوبك الجامعية</item>
+        <item> كلية عجلون الجامعية</item>
+        <item>كلية العقبة الجامعية</item>
+    </string-array>
+    <string name="title_activity_weather">WeatherActivity</string>
+    <string name="title_activity_calculator">CalculatorActivity</string>
+    <string-array name="hours">
+        <item>عددالساعات</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="marks">
+        <item>العلامة المتوقعة</item>
+        <item>A</item>
+        <item>B+</item>
+        <item>B</item>
+        <item>C+</item>
+        <item>C</item>
+        <item>D+</item>
+        <item>D</item>
+        <item>F</item>
+    </string-array>
+    <string-array name="marksold">
+        <item>العلامةالسابقة</item>
+        <item>A</item>
+        <item>B+</item>
+        <item>B</item>
+        <item>C+</item>
+        <item>C</item>
+        <item>D+</item>
+        <item>D</item>
+        <item>F</item>
+    </string-array>
 </resources>
