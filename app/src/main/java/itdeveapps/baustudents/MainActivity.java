@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton weather_btn;
@@ -42,8 +43,22 @@ public class MainActivity extends AppCompatActivity {
                 next.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String hours_done = hours.getText().toString();
-                        String current_avg = avg.getText().toString();
+                        int hours_done = 0;
+                        double current_avg = 0;
+                        if (hours.getText().toString().isEmpty() || avg.getText().toString().isEmpty()) {
+                            Toast.makeText(MainActivity.this, "Enter DATA PLEASE !!", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else {
+                            hours_done = Integer.parseInt(hours.getText().toString());
+                            current_avg = Double.parseDouble(avg.getText().toString());
+                        }
+
+                        if (current_avg > 4.0 || current_avg < 0 || hours_done < 0) {
+                            Toast.makeText(MainActivity.this, "قطاعة -.-", Toast.LENGTH_LONG).show();
+                            return;
+
+                        }
+
                         Intent i = new Intent(MainActivity.this, CalculatorActivity.class);
                         i.putExtra("hours", hours_done);
                         i.putExtra("current_avg", current_avg);
