@@ -12,7 +12,7 @@
     <string name="change_city">اختر الجامعة</string>
     <string-array name="ar">
         <item>البلقاء المركز </item>
-        <item>مادبا</item>
+        <item>كلية العقبة الجامعية</item>
         <item>كلية الحصن الجامعية</item>
         <item>كلية إربد الجامعية</item>
         <item>كلية الزرقاء الجامعية</item>
@@ -23,7 +23,8 @@
         <item>كلية معان الجامعية</item>
         <item>كلية الشوبك الجامعية</item>
         <item> كلية عجلون الجامعية</item>
-        <item>كلية العقبة الجامعية</item>
+
+        <item>مادبا</item>
     </string-array>
     <string name="title_activity_weather">WeatherActivity</string>
     <string name="title_activity_calculator">CalculatorActivity</string>
@@ -55,4 +56,8 @@
         <item>D</item>
         <item>F</item>
     </string-array>
+    <string name="title_activity_avg_result">AvgResult</string>
+    <string name="semster">المعدل الفصلي :</string>
+    <string name="altrakomi">المعدل التراكمي :</string>
+    <string name="hourscut">عدد الساعات المقطوعة</string>
 </resources>

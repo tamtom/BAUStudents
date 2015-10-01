@@ -381,7 +381,7 @@
                 <CheckBox android:id="@+id/c10" />
                 <TextView
                     android:text="10"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
             </TableRow>

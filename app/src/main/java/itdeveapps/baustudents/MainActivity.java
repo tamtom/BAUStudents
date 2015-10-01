@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Parse.initialize(this, "fGk54ikFVF8U0vS9d2AHTe8z2XN9HVHyPW9jpeU1", "KJ9XvTeCi6gPmLmy266hecwR32kSfSMny4YOrowu");
+        //ParseInstallation.getCurrentInstallation().saveInBackground();
+
         weather_btn = (ImageButton) findViewById(R.id.weather_btn);
         weather_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override

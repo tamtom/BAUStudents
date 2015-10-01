@@ -56,7 +56,7 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
                 dialog.setMessage("Loading...");
                 dialog.show();
                 if (c.contains("المركز"))
-                    service.refreshWeather("Al Balqa, Jordan");
+                    service.refreshWeather("Al Balqa, Yarqa");
                 else if (c.contains("العقبة"))
                     service.refreshWeather("Al Aqaba, Jordan");
                 else if (c.contains("الهندسة"))
@@ -66,7 +66,28 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
                     loctaion.setText("No Madaba ");
                     condition.setText("\uD83D\uDE22");
                     dialog.hide();
-                }
+                } else if (c.contains("الحصن"))
+                    service.refreshWeather("Irbid, Jordan");
+                else if (c.contains("إربد"))
+                    service.refreshWeather("Irbid, Jordan");
+                else if (c.contains("الزرقاء"))
+                    service.refreshWeather("Al Zarqa, Jordan");
+                else if (c.contains("المالية")) {
+                    service.refreshWeather("Amman, Jordan");
+                    loctaion.setText("Sweifieh ,Amman");
+                } else if (c.contains("الكرك"))
+                    service.refreshWeather("Al Karak, Jordan");
+                else if (c.contains("معان"))
+                    service.refreshWeather("Maan, Jordan");
+                else if (c.contains("الشوبك"))
+                    service.refreshWeather("Maan, Alshoubak");
+                else if (c.contains("عجلون"))
+                    service.refreshWeather("Ajloun, Jordan");
+
+
+
+
+
             }
         });
 

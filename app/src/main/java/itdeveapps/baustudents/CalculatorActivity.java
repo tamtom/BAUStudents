@@ -1,7 +1,9 @@
 package itdeveapps.baustudents;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +28,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     private int oldM_id[];
     private int newM_id[];
     private int checkBox_id[];
+    private int cutHour;
+    private double currentAvg;
 
     public double[] getNewMarks() {
         return newMarks;
@@ -38,6 +42,13 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         int[] spinners = {R.id.avg_txt};
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
+        Bundle e = getIntent().getExtras();
+        /*
+         i.putExtra("hours", hours_done);
+                        i.putExtra("current_avg", current_avg);
+         */
+        cutHour = e.getInt("hours");
+        currentAvg = e.getDouble("current_avg");
         points = new HashMap<>();
         points.put("A", 4.0);
         points.put("B+", 3.5);
@@ -97,7 +108,77 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         return true;
     }
 
-    private void setNewMarks() {
+    public double altrakomi() {
+        double convert = cutHour * currentAvg;
+        Log.d("after convert : ", "" + convert);
+        double pointInSemester = 0;
+        for (int i = 0; i < 10; i++) {
+            if (check_boxs[i].isChecked()) {
+                pointInSemester += Integer.parseInt(h_spinner[i].getSelectedItem().toString()) * points.get(new_spinner[i].getSelectedItem().toString());
+            }
+        }
+        Log.d("pointsemester : ", "" + pointInSemester);
+        pointInSemester += convert;
+        setOldMarks();
+        double oldp = 0;
+        for (int i = 0; i < oldMarks.length; i++) {
+            oldp += oldMarks[i];
+        }
+
+        pointInSemester = pointInSemester - oldp;
+        Log.d("all Semester ", "" + pointInSemester);
+        cutHour -= getsumOldHour();
+        return (pointInSemester / (getsumAllHour() + cutHour));
+    }
+
+    public double getSemesterMark() {
+        double sum = 0;
+        for (int i = 0; i < 10; i++) {
+            if (check_boxs[i].isChecked()) {
+                sum += Integer.parseInt(h_spinner[i].getSelectedItem().toString()) * points.get(new_spinner[i].getSelectedItem().toString());
+            }
+        }
+
+        return (sum / getsumAllHour());
+    }
+
+    private int getsumAllHour() {
+        int sum = 0;
+        for (int i = 0; i < 10; i++) {
+            if (check_boxs[i].isChecked()) {
+                sum += Integer.parseInt(h_spinner[i].getSelectedItem().toString());
+            }
+
+
+        }
+        return sum;
+    }
+
+    private int getsumNewHour() {
+        int sum = 0;
+        for (int i = 0; i < 10; i++) {
+            if (check_boxs[i].isChecked() && t_btns[i].getTextOff().equals(t_btns[i].getText())) {
+                sum += Integer.parseInt(h_spinner[i].getSelectedItem().toString());
+            }
+
+
+        }
+        return sum;
+    }
+
+    private int getsumOldHour() {
+        int sum = 0;
+        for (int i = 0; i < 10; i++) {
+            if (check_boxs[i].isChecked() && t_btns[i].getTextOn().equals(t_btns[i].getText())) {
+                sum += Integer.parseInt(h_spinner[i].getSelectedItem().toString());
+            }
+
+
+        }
+        return sum;
+    }
+
+  /*  private void setNewMarks() {
         newMarks = new double[getNumberOfSubjects()];
         for (int i = 0, index = 0; i < 10 && index < newMarks.length; i++) {
             if (check_boxs[i].isChecked()) {
@@ -106,7 +187,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             }
         }
 
-    }
+    } */
 
     private int getNumberOfNewSubjects() {
         int c = 0;
@@ -190,7 +271,15 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+
+            Intent i = new Intent(CalculatorActivity.this, AvgResult.class);
+
+            i.putExtra("altrakomi", altrakomi());
+            i.putExtra("alfasli", getSemesterMark());
+
+            finish();
+            startActivity(i);
+
         }
 
         return super.onOptionsItemSelected(item);

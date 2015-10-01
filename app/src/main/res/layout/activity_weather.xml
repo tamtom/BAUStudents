@@ -54,13 +54,6 @@
 
         android:src="@drawable/icon_na" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/yahoo_logo" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,14 +89,18 @@
                 android:layout_height="wrap_content"
 
 
-                android:text="day one" />
+                android:text="day one"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/low1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="low" />
+                android:text="low"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -136,14 +133,18 @@
                 android:layout_height="wrap_content"
 
 
-                android:text="day one" />
+                android:text="day one"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/low2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="low" />
+                android:text="low"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -176,14 +177,18 @@
                 android:layout_height="wrap_content"
 
 
-                android:text="day one" />
+                android:text="day one"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/low3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="low" />
+                android:text="low"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -216,14 +221,18 @@
                 android:layout_height="wrap_content"
 
 
-                android:text="day one" />
+                android:text="day one"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/low4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="low" />
+                android:text="low"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -256,7 +265,9 @@
                 android:layout_height="wrap_content"
 
 
-                android:text="day one" />
+                android:text="day one"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/low5"
@@ -264,7 +275,9 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="10dp"
-                android:text="low" />
+                android:text="low"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
