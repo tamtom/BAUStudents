@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".WeatherActivity">
     <item
+
         android:id="@+id/selectuni"
         android:orderInCategory="150"
         android:title="اختر الجامعة"
@@ -10,13 +11,7 @@
 
         />
 
-    <item
-        android:id="@+id/change_city"
-        android:icon="@drawable/ic_action_social_school"
-        android:orderInCategory="100"
-        android:title="@string/change_city"
 
-        app:showAsAction="withText|always" />
 
 
 </menu>

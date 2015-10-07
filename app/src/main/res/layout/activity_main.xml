@@ -57,7 +57,7 @@
         android:textStyle="bold" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/notes"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignLeft="@+id/textView"
@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView"
-        android:layout_below="@+id/imageButton2"
+        android:layout_below="@+id/notes"
         android:text="@string/notes"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="16sp"
@@ -82,7 +82,7 @@
         android:id="@+id/imageButton3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignBottom="@+id/imageButton2"
+        android:layout_alignBottom="@+id/notes"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
         android:background="@drawable/btn_map" />

@@ -15,7 +15,7 @@ import android.widget.ToggleButton;
 import java.util.HashMap;
 
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
-    double[] newMarks;
+
     double[] oldMarks;
     private HashMap<String, Double> points;
     private ToggleButton[] t_btns;
@@ -31,9 +31,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     private int cutHour;
     private double currentAvg;
 
-    public double[] getNewMarks() {
-        return newMarks;
-    }
 
 
 
@@ -46,9 +43,12 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         /*
          i.putExtra("hours", hours_done);
                         i.putExtra("current_avg", current_avg);
+
          */
+        if (e != null) {
         cutHour = e.getInt("hours");
-        currentAvg = e.getDouble("current_avg");
+            currentAvg = e.getDouble("current_avg");
+        }
         points = new HashMap<>();
         points.put("A", 4.0);
         points.put("B+", 3.5);
@@ -95,14 +95,15 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         for (int i = 0; i < 10; i++) {
             if (check_boxs[i].isChecked()) {
                 if ((!Character.isDigit(h_spinner[i].getSelectedItem().toString().charAt(0))) || (new_spinner[i].getSelectedItem().toString().equals("العلامةالمتوقعة"))) {
-                    Toast.makeText(CalculatorActivity.this, i + "الرجاء ادخال المعلومات كاملة في المادة ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CalculatorActivity.this, "الرجاء ادخال المعلومات كاملة في المادة  " + (i + 1), Toast.LENGTH_LONG).show();
                     return false;
                 }
-                if (old_spinner[i].getSelectedItem().toString().equals("العلامةالسابقة")) {
-                    Toast.makeText(CalculatorActivity.this, (i + 1) + "  الرجاء ادخال المعلومات كاملة في المادة   ", Toast.LENGTH_LONG).show();
-                    return false;
 
-                }
+            }
+            if (old_spinner[i].getSelectedItem().toString().equals("العلامةالسابقة") && t_btns[i].getTextOn().equals(t_btns[i].getText())) {
+                Toast.makeText(CalculatorActivity.this, (i + 1) + "  الرجاء ادخال المعلومات كاملة في المادة   ", Toast.LENGTH_LONG).show();
+                return false;
+
             }
         }
         return true;
@@ -154,17 +155,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         return sum;
     }
 
-    private int getsumNewHour() {
-        int sum = 0;
-        for (int i = 0; i < 10; i++) {
-            if (check_boxs[i].isChecked() && t_btns[i].getTextOff().equals(t_btns[i].getText())) {
-                sum += Integer.parseInt(h_spinner[i].getSelectedItem().toString());
-            }
 
-
-        }
-        return sum;
-    }
 
     private int getsumOldHour() {
         int sum = 0;
@@ -178,25 +169,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         return sum;
     }
 
-  /*  private void setNewMarks() {
-        newMarks = new double[getNumberOfSubjects()];
-        for (int i = 0, index = 0; i < 10 && index < newMarks.length; i++) {
-            if (check_boxs[i].isChecked()) {
-                newMarks[index] = points.get(new_spinner[i].getSelectedItem().toString());
-                index++;
-            }
-        }
 
-    } */
 
-    private int getNumberOfNewSubjects() {
-        int c = 0;
-        for (int i = 0; i < 10; i++) {
-            if (check_boxs[i].isChecked() && t_btns[i].getTextOff().equals(t_btns[i].getText()))
-                c++;
-        }
-        return c;
-    }
 
     private void setOldMarks() {
         oldMarks = new double[getNumberOfOldSubjects()];
@@ -213,15 +187,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         int c = 0;
         for (int i = 0; i < 10; i++) {
             if (check_boxs[i].isChecked() && t_btns[i].getTextOn().equals(t_btns[i].getText()))
-                c++;
-        }
-        return c;
-    }
-
-    private int getNumberOfSubjects() {
-        int c = 0;
-        for (int i = 0; i < 10; i++) {
-            if (check_boxs[i].isChecked())
                 c++;
         }
         return c;
@@ -271,14 +236,15 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-
+            if (handelrow()) {
             Intent i = new Intent(CalculatorActivity.this, AvgResult.class);
 
             i.putExtra("altrakomi", altrakomi());
             i.putExtra("alfasli", getSemesterMark());
 
             finish();
-            startActivity(i);
+                startActivity(i);
+            }
 
         }
 
@@ -316,4 +282,11 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, MainActivity.class);
+        finish();
+        startActivity(i);
+
+    }
 }

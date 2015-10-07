@@ -40,6 +40,7 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
     public void showDialog() {
         dialogs = new Dialog(this);
 
+
         dialogs.setContentView(R.layout.select);
         change = (Button) dialogs.findViewById(R.id.change);
         li = (Spinner) dialogs.findViewById(R.id.uni);
@@ -97,6 +98,7 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
+
         img = (ImageView) findViewById(R.id.img);
         temp = (TextView) findViewById(R.id.temp);
         loctaion = (TextView) findViewById(R.id.location);
@@ -187,21 +189,14 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
         int ll[] = item.getForcast().getLow();
         String da[] = item.getForcast().getDays();
 
-        //noinspection deprecation
 
-        //im.setImageDrawable(imagdrawble);
-
-        //    System.out.println(hh[0]);
-
-        //  h.setText(hh[0] + "");
-        // l.setText(ll[0]+"");
         for (int i = 0; i < 5; i++) {
             days[i].getD().setText(da[i]);
-            //  Log.d("loop", days[i].getD().getText().toString());
+
             days[i].h.setText(hh[i] + "");
-            // Log.d("loop", days[i].getH().getText().toString());
+
             days[i].getL().setText(ll[i] + "");
-            // Log.d("loop", days[i].getL().getText().toString());
+
             int res1 = getResources().getIdentifier("drawable/icon_" + cc[i], null, getPackageName());
             //noinspection deprecation
             imagdrawble = getResources().getDrawable(res1);
@@ -220,13 +215,21 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_weather, menu);
+
+
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.change_city) {
+        if (id == R.id.selectuni) {
 
             showDialog();
         }
