@@ -2,18 +2,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
     tools:context="itdeveapps.baustudents.CalculatorActivity">
 
 
-    <ScrollView
+    <EditText
+        android:id="@+id/cut_hour"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="20dp"
+        android:focusable="true"
+        android:gravity="right"
+        android:hint="عدد الساعات المقطوعة"
+        android:inputType="number" />
 
+    <EditText
+
+        android:id="@+id/current_avg"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:hint="المعدل التراكمي الحالي"
+        android:inputType="numberDecimal" />
+
+
+    <ScrollView
+        android:id="@+id/scroller"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_alignParentLeft="true"
-
         android:layout_alignParentStart="true"
+
         android:layout_alignParentTop="true"
+
+        android:layout_below="@id/cut_hour"
+        android:layout_marginTop="50dp"
         android:fillViewport="false">
 
         <TableLayout

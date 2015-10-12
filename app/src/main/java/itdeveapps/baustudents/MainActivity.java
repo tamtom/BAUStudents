@@ -1,22 +1,18 @@
 package itdeveapps.baustudents;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton weather_btn;
     private ImageButton avg_calc;
     private ImageButton note_activity;
+    private ImageButton adsbutton;
     private boolean oriented;
 
     public boolean isOriented() {
@@ -37,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        oriented = savedInstanceState.getBoolean("oriented");
+      /*  oriented = savedInstanceState.getBoolean("oriented");
         if (oriented) {
             takedata();
-        }
+        }*/
     }
 
-    public void takedata() {
+    /*public void takedata() {
         final Dialog takeinfo = new Dialog(MainActivity.this);
         takeinfo.setContentView(R.layout.hours_marks);
         final EditText hours = (EditText) takeinfo.findViewById(R.id.hours_txt);
@@ -91,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }
+    } */
 
 
     @Override
@@ -112,9 +108,11 @@ public class MainActivity extends AppCompatActivity {
         avg_calc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setOriented(true);
+               /* setOriented(true);
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                takedata();
+                takedata(); */
+                Intent i = new Intent(MainActivity.this, CalculatorActivity.class);
+                startActivity(i);
             }
         });
         note_activity = (ImageButton) findViewById(R.id.notes);
@@ -122,6 +120,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, MainNoteActivity.class);
+                startActivity(i);
+            }
+        });
+        adsbutton = (ImageButton) findViewById(R.id.adsbutton);
+        adsbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, AnnouncementMainActivity.class);
                 startActivity(i);
             }
         });

@@ -63,4 +63,6 @@
     <string name="title_activity_main_note">MainNoteActivity</string>
     <string name="title_activity_add_new_note">AddNewNoteActivity</string>
     <string name="title_activity_note_detial">NoteDetialActivity</string>
+    <string name="title_activity_anouncment_main">AnouncmentMainActivity</string>
+    <string name="title_activity_detial_announcement">DetialAnnouncementActivity</string>
 </resources>

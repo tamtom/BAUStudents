@@ -12,6 +12,8 @@ import com.parse.ParsePushBroadcastReceiver;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import itdeveapps.baustudents.AnnouncementMainActivity;
+
 /**
  * Created by omar on 10/5/2015.
  */
@@ -62,10 +64,10 @@ public class CustomReciver extends ParsePushBroadcastReceiver {
     @Override
     protected void onPushOpen(Context context, Intent intent) {
         super.onPushOpen(context, intent);
-      /*  Log.d("inPushOpen","we are here ");
-        Intent i = new Intent(context, CalculatorActivity.class);
+
+        Intent i = new Intent(context, AnnouncementMainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(i); */
+        context.startActivity(i);
 
 
     }

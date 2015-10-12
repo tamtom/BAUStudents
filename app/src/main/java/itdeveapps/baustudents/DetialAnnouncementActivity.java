@@ -6,33 +6,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import java.util.Locale;
-
-public class AvgResult extends AppCompatActivity {
-    private TextView trakomi;
-    private TextView fasli;
-
+public class DetialAnnouncementActivity extends AppCompatActivity {
+    TextView header;
+    TextView content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Locale[] locales = Locale.getAvailableLocales();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_avg_result);
-        trakomi = (TextView) findViewById(R.id.trakomires);
-        fasli = (TextView) findViewById(R.id.faslires);
+        setContentView(R.layout.activity_detial_announcement);
+        header = (TextView) findViewById(R.id.headerd);
+        content = (TextView) findViewById(R.id.contentd);
         Bundle e = getIntent().getExtras();
-        double t = e.getDouble("altrakomi");
-        double f = e.getDouble("alfasli");
-        t = Math.round(t * 100.0) / 100.0;
-        f = Math.round(f * 100.0) / 100.0;
-        trakomi.setText(t + "");
-        fasli.setText(f + "");
+        if (e != null) {
+            String head = e.getString("header");
+            String c = e.getString("content");
+            header.setText(head);
+            content.setText(c);
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_avg_result, menu);
+        getMenuInflater().inflate(R.menu.menu_detial_announcement, menu);
         return true;
     }
 

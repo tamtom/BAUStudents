@@ -79,13 +79,19 @@
 
         <activity
             android:name=".MainNoteActivity"
-            android:label="@string/title_activity_main_note"></activity>
+            android:label="@string/title_activity_main_note" />
         <activity
             android:name=".AddNewNoteActivity"
-            android:label="@string/title_activity_add_new_note"></activity>
+            android:label="@string/title_activity_add_new_note" />
         <activity
             android:name=".NoteDetialActivity"
-            android:label="@string/title_activity_note_detial"></activity>
+            android:label="@string/title_activity_note_detial" />
+        <activity
+            android:name=".AnnouncementMainActivity"
+            android:label="@string/title_activity_anouncment_main"></activity>
+        <activity
+            android:name=".DetialAnnouncementActivity"
+            android:label="@string/title_activity_detial_announcement"></activity>
     </application>
 
 </manifest>

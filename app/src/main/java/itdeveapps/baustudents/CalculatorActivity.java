@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -30,25 +31,20 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     private int checkBox_id[];
     private int cutHour;
     private double currentAvg;
-
+    private EditText cHour;
+    private EditText cAVG;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int[] spinners = {R.id.avg_txt};
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-        Bundle e = getIntent().getExtras();
-        /*
-         i.putExtra("hours", hours_done);
-                        i.putExtra("current_avg", current_avg);
+        cHour = (EditText) findViewById(R.id.cut_hour);
+        cAVG = (EditText) findViewById(R.id.current_avg);
+        //  int[] spinners = {R.id.avg_txt};
 
-         */
-        if (e != null) {
-        cutHour = e.getInt("hours");
-            currentAvg = e.getDouble("current_avg");
-        }
         points = new HashMap<>();
         points.put("A", 4.0);
         points.put("B+", 3.5);
@@ -125,10 +121,14 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         for (int i = 0; i < oldMarks.length; i++) {
             oldp += oldMarks[i];
         }
+        Log.d("old marks", oldp + "");
 
         pointInSemester = pointInSemester - oldp;
         Log.d("all Semester ", "" + pointInSemester);
+        Log.d("cutted hour 1", cutHour + "");
         cutHour -= getsumOldHour();
+        Log.d("cutted hour 2", cutHour + "");
+        Log.d("all hours", getsumAllHour() + "");
         return (pointInSemester / (getsumAllHour() + cutHour));
     }
 
@@ -176,7 +176,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         oldMarks = new double[getNumberOfOldSubjects()];
         for (int i = 0, index = 0; i < 10 && index < oldMarks.length; i++) {
             if (check_boxs[i].isChecked() && t_btns[i].getTextOn().equals(t_btns[i].getText())) {
-                oldMarks[index] = points.get(old_spinner[i].getSelectedItem().toString());
+                oldMarks[index] = points.get(old_spinner[i].getSelectedItem().toString()) * Integer.parseInt(h_spinner[i].getSelectedItem().toString());
                 index++;
             }
         }
@@ -236,7 +236,22 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            if (handelrow()) {
+
+            boolean ok = true;
+            if (cHour.getText().toString().isEmpty() || cAVG.getText().toString().isEmpty()) {
+                Toast.makeText(CalculatorActivity.this, "Enter DATA PLEASE !!", Toast.LENGTH_SHORT).show();
+                ok = false;
+            } else {
+                cutHour = Integer.parseInt(cHour.getText().toString());
+                currentAvg = Double.parseDouble(cHour.getText().toString());
+            }
+
+            if (currentAvg > 4.0 || currentAvg < 0 || cutHour < 0) {
+                Toast.makeText(CalculatorActivity.this, "قطاعة -.-", Toast.LENGTH_LONG).show();
+                ok = false;
+
+            }
+            if (handelrow() && ok) {
             Intent i = new Intent(CalculatorActivity.this, AvgResult.class);
 
             i.putExtra("altrakomi", altrakomi());
