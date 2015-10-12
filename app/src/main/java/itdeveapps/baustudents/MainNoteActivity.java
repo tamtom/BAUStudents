@@ -3,6 +3,7 @@ package itdeveapps.baustudents;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -40,6 +41,8 @@ public class MainNoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_note);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#03A9F4")));
         listView = (ListView) findViewById(R.id.list);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setSize(FloatingActionButton.SIZE_MINI);
@@ -47,7 +50,7 @@ public class MainNoteActivity extends AppCompatActivity {
 // NOTE invoke this method after setting new values!
         fab.initBackground();
 // NOTE standard method of ImageView
-        fab.setImageResource(R.drawable.add);
+        fab.setImageResource(R.drawable.ic_add_white_24dp);
         listView.setOnTouchListener(new ShowHideOnScroll(fab));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

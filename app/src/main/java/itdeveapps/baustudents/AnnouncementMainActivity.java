@@ -162,7 +162,15 @@ public class AnnouncementMainActivity extends AppCompatActivity {
             v = Titles.toArray(v);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(AnnouncementMainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, v);
             l.setAdapter(adapter);
+            if (v.length > 0)
             mProgressDialog.dismiss();
+            else {
+                mProgressDialog.dismiss();
+                Intent i = new Intent(AnnouncementMainActivity.this, NoInternetConnectionActivity.class);
+                finish();
+                startActivity(i);
+
+            }
         }
     }
 }

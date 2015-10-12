@@ -3,6 +3,7 @@ package itdeveapps.baustudents;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import dataweather.Channel;
 import dataweather.Forcast;
@@ -208,7 +208,10 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
 
     @Override
     public void servicefail(Exception ex) {
-        Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        dialog.dismiss();
+        Intent i = new Intent(this, NoInternetConnectionActivity.class);
+        finish();
+        startActivity(i);
 
     }
 

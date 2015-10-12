@@ -60,9 +60,10 @@
     <string name="semster">المعدل الفصلي :</string>
     <string name="altrakomi">المعدل التراكمي :</string>
     <string name="hourscut">عدد الساعات المقطوعة</string>
-    <string name="title_activity_main_note">MainNoteActivity</string>
-    <string name="title_activity_add_new_note">AddNewNoteActivity</string>
-    <string name="title_activity_note_detial">NoteDetialActivity</string>
-    <string name="title_activity_anouncment_main">AnouncmentMainActivity</string>
-    <string name="title_activity_detial_announcement">DetialAnnouncementActivity</string>
+    <string name="title_activity_main_note">دفتر ملاحظتك</string>
+    <string name="title_activity_add_new_note">اضافة ملاحظة جديدة</string>
+    <string name="title_activity_note_detial">تفاصيل</string>
+    <string name="title_activity_anouncment_main">اعلانات مهمة</string>
+    <string name="title_activity_detial_announcement">تفاصيل الاعلان</string>
+    <string name="title_activity_no_internet_connection">NoInternetConnection</string>
 </resources>

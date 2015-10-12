@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -11,6 +13,7 @@ import java.util.Locale;
 public class AvgResult extends AppCompatActivity {
     private TextView trakomi;
     private TextView fasli;
+    private Button again;
 
 
     @Override
@@ -27,6 +30,14 @@ public class AvgResult extends AppCompatActivity {
         f = Math.round(f * 100.0) / 100.0;
         trakomi.setText(t + "");
         fasli.setText(f + "");
+        again = (Button) findViewById(R.id.again);
+        again
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
     }
 
     @Override

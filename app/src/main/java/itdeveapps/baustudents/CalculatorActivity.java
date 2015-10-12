@@ -1,6 +1,8 @@
 package itdeveapps.baustudents;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -44,7 +46,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         cHour = (EditText) findViewById(R.id.cut_hour);
         cAVG = (EditText) findViewById(R.id.current_avg);
         //  int[] spinners = {R.id.avg_txt};
-
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
         points = new HashMap<>();
         points.put("A", 4.0);
         points.put("B+", 3.5);
@@ -257,7 +260,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             i.putExtra("altrakomi", altrakomi());
             i.putExtra("alfasli", getSemesterMark());
 
-            finish();
+                // finish();
                 startActivity(i);
             }
 

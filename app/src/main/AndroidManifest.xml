@@ -88,10 +88,13 @@
             android:label="@string/title_activity_note_detial" />
         <activity
             android:name=".AnnouncementMainActivity"
-            android:label="@string/title_activity_anouncment_main"></activity>
+            android:label="@string/title_activity_anouncment_main" />
         <activity
             android:name=".DetialAnnouncementActivity"
-            android:label="@string/title_activity_detial_announcement"></activity>
+            android:label="@string/title_activity_detial_announcement" />
+        <activity
+            android:name=".NoInternetConnectionActivity"
+            android:label="@string/title_activity_no_internet_connection"></activity>
     </application>
 
 </manifest>

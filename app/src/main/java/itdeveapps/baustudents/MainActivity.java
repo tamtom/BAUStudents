@@ -1,18 +1,25 @@
 package itdeveapps.baustudents;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton weather_btn;
-    private ImageButton avg_calc;
-    private ImageButton note_activity;
-    private ImageButton adsbutton;
+    private ImageButton weatherBtn;
+    private ImageButton calcBtn;
+    private ImageButton noteBtn;
+    private ImageButton adsBtn;
+    private ImageButton mapsBtn;
     private boolean oriented;
 
     public boolean isOriented() {
@@ -33,104 +40,84 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-      /*  oriented = savedInstanceState.getBoolean("oriented");
-        if (oriented) {
-            takedata();
-        }*/
     }
-
-    /*public void takedata() {
-        final Dialog takeinfo = new Dialog(MainActivity.this);
-        takeinfo.setContentView(R.layout.hours_marks);
-        final EditText hours = (EditText) takeinfo.findViewById(R.id.hours_txt);
-        final EditText avg = (EditText) takeinfo.findViewById(R.id.avg_txt);
-        Button next = (Button) takeinfo.findViewById(R.id.next);
-        Button cancel = (Button) takeinfo.findViewById(R.id.cancel);
-        takeinfo.setCancelable(true);
-        takeinfo.show();
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setOriented(false);
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-                takeinfo.hide();
-            }
-        });
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int hours_done = 0;
-                double current_avg = 0;
-                if (hours.getText().toString().isEmpty() || avg.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Enter DATA PLEASE !!", Toast.LENGTH_SHORT).show();
-                    return;
-                } else {
-                    hours_done = Integer.parseInt(hours.getText().toString());
-                    current_avg = Double.parseDouble(avg.getText().toString());
-                }
-
-                if (current_avg > 4.0 || current_avg < 0 || hours_done < 0) {
-                    Toast.makeText(MainActivity.this, "قطاعة -.-", Toast.LENGTH_LONG).show();
-                    return;
-
-                }
-
-                Intent i = new Intent(MainActivity.this, CalculatorActivity.class);
-                i.putExtra("hours", hours_done);
-                i.putExtra("current_avg", current_avg);
-                takeinfo.hide();
-
-                startActivity(i);
-
-
-            }
-        });
-    } */
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setOriented(false);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
 
-        weather_btn = (ImageButton) findViewById(R.id.weather_btn);
-        weather_btn.setOnClickListener(new View.OnClickListener() {
+        weatherBtn = (ImageButton) findViewById(R.id.weather_btn);
+        weatherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, WeatherActivity.class);
+                Intent i;
+                if (haveNetworkConnection()) {
+                    i = new Intent(MainActivity.this, WeatherActivity.class);
+                } else {
+                    i = new Intent(MainActivity.this, NoInternetConnectionActivity.class);
+
+                }
                 startActivity(i);
             }
         });
-        avg_calc = (ImageButton) findViewById(R.id.avg_calc);
-        avg_calc.setOnClickListener(new View.OnClickListener() {
+        calcBtn = (ImageButton) findViewById(R.id.avg_calc);
+        calcBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* setOriented(true);
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                takedata(); */
+
                 Intent i = new Intent(MainActivity.this, CalculatorActivity.class);
                 startActivity(i);
             }
         });
-        note_activity = (ImageButton) findViewById(R.id.notes);
-        note_activity.setOnClickListener(new View.OnClickListener() {
+        noteBtn = (ImageButton) findViewById(R.id.notes);
+        noteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, MainNoteActivity.class);
                 startActivity(i);
             }
         });
-        adsbutton = (ImageButton) findViewById(R.id.adsbutton);
-        adsbutton.setOnClickListener(new View.OnClickListener() {
+        adsBtn = (ImageButton) findViewById(R.id.adsbutton);
+        adsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, AnnouncementMainActivity.class);
+
+                Intent i;
+                if (haveNetworkConnection()) {
+                    i = new Intent(MainActivity.this, AnnouncementMainActivity.class);
+                } else {
+                    i = new Intent(MainActivity.this, NoInternetConnectionActivity.class);
+                }
                 startActivity(i);
             }
         });
+        mapsBtn = (ImageButton) findViewById(R.id.maps);
+        mapsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Coming Soon :)", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
     }
 
     @Override
