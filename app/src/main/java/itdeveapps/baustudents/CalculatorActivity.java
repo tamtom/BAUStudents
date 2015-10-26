@@ -246,7 +246,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 ok = false;
             } else {
                 cutHour = Integer.parseInt(cHour.getText().toString());
-                currentAvg = Double.parseDouble(cHour.getText().toString());
+                currentAvg = Double.parseDouble(cAVG.getText().toString());
             }
 
             if (currentAvg > 4.0 || currentAvg < 0 || cutHour < 0) {
@@ -302,9 +302,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, MainActivity.class);
+        //Intent i = new Intent(this, MainActivity.class);
         finish();
-        startActivity(i);
+        //  startActivity(i);
 
     }
 }

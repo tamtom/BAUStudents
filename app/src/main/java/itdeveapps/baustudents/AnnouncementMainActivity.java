@@ -69,6 +69,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
     private class showDesc extends AsyncTask<Void, Void, Void> {
         String header;
         String conent;
+        String link;
 
         @Override
         protected void onPreExecute() {
@@ -94,6 +95,8 @@ public class AnnouncementMainActivity extends AppCompatActivity {
                 Log.d("header ", clas.select("b").text());
                 header = clas.select("b").text();
                 conent = clas.select("i").text();
+                link = clas.select("a").toString();
+                Log.d("link style", link);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -109,6 +112,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
             Intent i = new Intent(AnnouncementMainActivity.this, DetialAnnouncementActivity.class);
             i.putExtra("header", header);
             i.putExtra("content", conent);
+            i.putExtra("link", link);
             startActivity(i);
 
             //Toast.makeText(AnnouncementMainActivity.this,header+"\n"+conent,Toast.LENGTH_SHORT).show();

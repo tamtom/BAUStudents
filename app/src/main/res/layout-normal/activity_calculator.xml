@@ -1,0 +1,430 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context="itdeveapps.baustudents.CalculatorActivity">
+
+
+    <EditText
+        android:id="@+id/cut_hour"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="20dp"
+        android:focusable="true"
+        android:gravity="right"
+        android:hint="عدد الساعات المقطوعة"
+        android:inputType="number" />
+
+    <EditText
+
+        android:id="@+id/current_avg"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:hint="المعدل التراكمي الحالي"
+        android:inputType="numberDecimal" />
+
+
+    <ScrollView
+        android:id="@+id/scroller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentTop="true"
+
+        android:layout_below="@id/cut_hour"
+        android:layout_marginTop="50dp"
+        android:fillViewport="false">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:divider="?android:attr/dividerHorizontal"
+            android:dividerHeight="14px"
+            android:showDividers="middle"
+            android:stretchColumns="*">
+
+            <TableRow android:id="@+id/r1">
+
+                <Spinner
+
+
+                    android:id="@+id/m1"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+
+                    android:id="@+id/o1"
+
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h1"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t1"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox
+                    android:id="@+id/c1"
+                    android:checked="false" />
+
+                <TextView
+                    android:text="1"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+            </TableRow>
+
+            <TableRow android:id="@+id/r2">
+
+                <Spinner
+
+                    android:id="@+id/m2"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/o2"
+
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h2"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t2"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox
+                    android:id="@+id/c2"
+                    android:checked="false" />
+
+                <TextView
+                    android:text="2"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow android:id="@+id/r3">
+
+                <Spinner
+                    android:id="@+id/m3"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/o3"
+
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h3"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t3"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox
+                    android:id="@+id/c3"
+                    android:checked="false" />
+
+                <TextView
+                    android:text="3"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Spinner
+                    android:id="@+id/m4"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/o4"
+
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h4"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t4"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox
+                    android:id="@+id/c4"
+                    android:checked="false" />
+
+                <TextView
+                    android:text="4"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Spinner
+                    android:id="@+id/m5"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/o5"
+
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h5"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t5"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox
+                    android:id="@+id/c5"
+                    android:checked="false" />
+
+                <TextView
+                    android:text="5"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Spinner
+                    android:id="@+id/m6"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/o6"
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h6"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t6"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox android:id="@+id/c6" />
+
+                <TextView
+                    android:text="6"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Spinner
+                    android:id="@+id/m7"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/o7"
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h7"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t7"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox android:id="@+id/c7" />
+
+                <TextView
+                    android:text="7"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Spinner
+                    android:id="@+id/m8"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/o8"
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h8"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t8"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox android:id="@+id/c8" />
+
+                <TextView
+                    android:text="8"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Spinner
+                    android:id="@+id/m9"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/o9"
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h9"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t9"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox android:id="@+id/c9" />
+
+                <TextView
+                    android:text="9"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Spinner
+                    android:id="@+id/m10"
+                    android:entries="@array/marks">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/o10"
+                    android:entries="@array/marksold">
+
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/h10"
+                    android:entries="@array/hours">
+
+                </Spinner>
+
+                <ToggleButton
+                    android:id="@+id/t10"
+                    android:checked="false"
+                    android:textOff="مادة جديدة"
+                    android:textOn="معادة" />
+
+                <CheckBox android:id="@+id/c10" />
+
+                <TextView
+                    android:text="10"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+
+        </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>
