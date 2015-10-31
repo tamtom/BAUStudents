@@ -94,7 +94,10 @@
             android:label="@string/title_activity_detial_announcement" />
         <activity
             android:name=".NoInternetConnectionActivity"
-            android:label="@string/title_activity_no_internet_connection"></activity>
+            android:label="@string/title_activity_no_internet_connection" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>

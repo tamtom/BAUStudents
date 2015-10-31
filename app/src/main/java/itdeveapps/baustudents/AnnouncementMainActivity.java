@@ -147,7 +147,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
 
                     ee.add(e.getElementsByAttribute("href"));
                 }
-                for (int i = 0; i < ee.size(); i++) {
+                for (int i = 0; i < ee.size() && i < 20; i++) {
                     Titles.add(ee.get(i).text());
                     linksDiscription.add(ee.get(i).attr("abs:href"));
 

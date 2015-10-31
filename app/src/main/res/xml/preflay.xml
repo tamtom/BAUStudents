@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+
+        android:selectable="false"
+        android:summary="الايام التي تريد ان تحصل على اشعارات حالة الطقس فيها" />
+    <PreferenceCategory
+        android:key="days"
+
+        android:title="الايام">
+
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:gravity="right"
+            android:key="sunday"
+            android:paddingLeft="115dp"
+            android:title="الاحد" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="monday"
+
+            android:title="الاثنين" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="tusday"
+
+            android:title="الثلاثاء" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="winsday"
+
+            android:title="الاربعاء" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="thursday"
+
+            android:title="الخميس" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="days"
+
+        android:title="الكليات التي انت مهتم بمعرفة اعلاناتها و اخبارها">
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="it"
+
+            android:title="كلية الامير عبدالله بن غازي" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="science"
+
+            android:title="كلية العلوم" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="eng"
+
+            android:title="كلية الهندسة" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="business"
+
+            android:title="كلية الاعمال" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="farm"
+
+            android:title="كلية الزراعة التكنولوجية" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="salt"
+
+            android:title="كلية السلط للعلوم الانسانية" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="acdemy"
+
+            android:title="الاكاديمية" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
