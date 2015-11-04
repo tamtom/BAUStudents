@@ -1,7 +1,9 @@
 package itdeveapps.baustudents;
 
-import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.View;
@@ -10,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-public class AvgResult extends Activity {
+public class AvgResult extends AppCompatActivity {
     private TextView trakomi;
     private TextView fasli;
     private Button again;
@@ -21,6 +23,12 @@ public class AvgResult extends Activity {
         Locale[] locales = Locale.getAvailableLocales();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avg_result);
+
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
+        }
         trakomi = (TextView) findViewById(R.id.trakomires);
         fasli = (TextView) findViewById(R.id.faslires);
         Bundle e = getIntent().getExtras();

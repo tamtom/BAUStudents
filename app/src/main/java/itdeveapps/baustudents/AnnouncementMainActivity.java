@@ -2,6 +2,8 @@ package itdeveapps.baustudents;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +33,14 @@ public class AnnouncementMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_anouncment_main);
+
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
+        }
         l = (ListView) findViewById(R.id.listView);
         new AddTitle().execute();
         l.setOnItemClickListener(new AdapterView.OnItemClickListener() {

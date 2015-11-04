@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -100,6 +102,11 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
+        }
         current_weather = (TextView) findViewById(R.id.current_weather);
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("weather_status", MODE_PRIVATE);
         String status = prefs.getString("status", "");

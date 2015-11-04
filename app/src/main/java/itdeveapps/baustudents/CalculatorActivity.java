@@ -47,7 +47,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         cAVG = (EditText) findViewById(R.id.current_avg);
         //  int[] spinners = {R.id.avg_txt};
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
+        if (actionBar != null) {
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
+        }
         points = new HashMap<>();
         points.put("A", 4.0);
         points.put("B+", 3.5);

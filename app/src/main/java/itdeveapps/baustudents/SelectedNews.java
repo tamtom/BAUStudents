@@ -2,9 +2,12 @@ package itdeveapps.baustudents;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +34,11 @@ public class SelectedNews extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_news);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
+        }
         Bundle extras = getIntent().getExtras();
 
 
@@ -94,15 +102,15 @@ public class SelectedNews extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-
+                Log.d("the link is ", url2 + "");
                 Document doc = Jsoup.connect(url2)
                         .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
-                        .get();
+                        .timeout(10000).get();
                 Element e = doc.getElementById("ContentPlaceHolderBody_ContentBody_lbl_News");
                 e.getElementsByTag("p");
                 conent = e.text();
 
-                Elements h = doc.getElementsByClass("newsHead");
+                Element h = doc.getElementById("ContentPlaceHolderBody_ContentBody_lbl_NewsHead");
                 header = h.text();
                 Element s = doc.getElementById("ContentPlaceHolderBody_ContentBody_lblOtherPics");
                 Elements f = s.getElementsByTag("a");
@@ -123,14 +131,19 @@ public class SelectedNews extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            if (header == null) {
+                Intent i = new Intent(SelectedNews.this, NoInternetConnectionActivity.class);
 
-            mProgressDialog.dismiss();
-            Intent i = new Intent(SelectedNews.this, DetialAnnouncementActivity.class);
-            i.putExtra("header", header);
-            i.putExtra("content", conent);
-            i.putExtra("link", link);
-            startActivity(i);
-
+                startActivity(i);
+            } else {
+                mProgressDialog.dismiss();
+                Intent i = new Intent(SelectedNews.this, DetialAnnouncementActivity.class);
+                i.putExtra("header", header);
+                Log.d("the header before aci", header + "");
+                i.putExtra("content", conent);
+                i.putExtra("link", link);
+                startActivity(i);
+            }
             //Toast.makeText(AnnouncementMainActivity.this,header+"\n"+conent,Toast.LENGTH_SHORT).show();
         }
     }
@@ -155,7 +168,7 @@ public class SelectedNews extends AppCompatActivity {
 
                 Document document = Jsoup.connect(url)
                         .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
-                        .get();
+                        .timeout(10000).get();
                 Elements e = document.select("a.bauliveportallinks");
                 values = new String[e.size()];
                 linksDiscription = new String[e.size()];
@@ -178,15 +191,16 @@ public class SelectedNews extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-
+            if (values != null) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(SelectedNews.this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
             listView.setAdapter(adapter);
             if (values.length > 0)
                 mProgressDialog.dismiss();
+            }
             else {
                 mProgressDialog.dismiss();
                 Intent i = new Intent(SelectedNews.this, NoInternetConnectionActivity.class);
-                finish();
+
                 startActivity(i);
 
             }

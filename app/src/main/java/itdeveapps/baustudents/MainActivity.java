@@ -1,7 +1,10 @@
 package itdeveapps.baustudents;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton noteBtn;
     private ImageButton adsBtn;
     private ImageButton mapsBtn;
+    private ImageButton newsBtn;
     private boolean oriented;
 
     public boolean isOriented() {
@@ -41,13 +45,49 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences prefs = getSharedPreferences("first", MODE_PRIVATE);
+        int ii = prefs.getInt("once", 0);
+        if (ii == 0) {
+            SharedPreferences.Editor editor = getSharedPreferences("first", MODE_PRIVATE).edit();
+
+            editor.putInt("once", 1);
+            editor.commit();
+            new AlertDialog.Builder(this)
+                    .setTitle("ضبط الاشعارات")
+                    .setMessage("للحصول على افضل تجربه مع التطبيق يرجى ضبط الاعدادات التي تناسبك")
+                    .setPositiveButton("الذهاب الى الاعدادات", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+                            startActivity(i);
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
         setOriented(false);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
+
+        if (actionBar != null) {
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
+        }
+        newsBtn = (ImageButton) findViewById(R.id.news);
+        newsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, NewsActivity.class);
+                startActivity(i);
+            }
+        });
 
         weatherBtn = (ImageButton) findViewById(R.id.weather_btn);
         weatherBtn.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +169,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
         finish();
+        System.exit(0);
     }
 
     @Override
@@ -147,6 +189,9 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
+        }
+        if (id == R.id.about) {
+            startActivity(new Intent(this, AboutActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

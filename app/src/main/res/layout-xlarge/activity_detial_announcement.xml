@@ -19,14 +19,16 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/headerd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
 
-                    android:layout_marginLeft="50dp"
+
                     android:layout_marginTop="20dp"
                     android:text="Large Text"
                     android:textColor="#000"
@@ -37,18 +39,19 @@
                     android:id="@+id/contentd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_marginTop="20dp"
                     android:text="Medium Text"
                     android:textColor="#000"
                     android:textSize="35sp" />
 
-                <TextView
+                <Button
                     android:id="@+id/link"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:text="link"
-                    android:textColor="#2196f3"
-                    android:textSize="32sp" />
+                    android:textColor="#2196f3" />
 
 
             </LinearLayout>

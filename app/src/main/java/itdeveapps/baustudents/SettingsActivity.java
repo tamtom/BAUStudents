@@ -9,6 +9,11 @@ import android.widget.Toast;
 import com.parse.ParsePush;
 
 public class SettingsActivity extends PreferenceActivity {
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

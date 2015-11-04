@@ -100,10 +100,13 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".NewsActivity"
-            android:label="@string/title_activity_news"></activity>
+            android:label="@string/title_activity_news" />
         <activity
             android:name=".SelectedNews"
-            android:label="@string/title_activity_selected_news"></activity>
+            android:label="@string/title_activity_selected_news" />
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about"></activity>
     </application>
 
 </manifest>

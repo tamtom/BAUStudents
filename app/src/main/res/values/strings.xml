@@ -26,8 +26,8 @@
 
         <item>مادبا</item>
     </string-array>
-    <string name="title_activity_weather">WeatherActivity</string>
-    <string name="title_activity_calculator">CalculatorActivity</string>
+    <string name="title_activity_weather">Weather</string>
+    <string name="title_activity_calculator">Calculator</string>
     <string-array name="hours">
         <item>عددالساعات</item>
         <item>1</item>
@@ -62,13 +62,14 @@
     <string name="semster">المعدل الفصلي :</string>
     <string name="altrakomi">المعدل التراكمي :</string>
     <string name="hourscut">عدد الساعات المقطوعة</string>
-    <string name="title_activity_main_note">دفتر ملاحظتك</string>
+    <string name="title_activity_main_note">دفتر ملاحظاتك</string>
     <string name="title_activity_add_new_note">اضافة ملاحظة جديدة</string>
     <string name="title_activity_note_detial">تفاصيل</string>
     <string name="title_activity_anouncment_main">اعلانات مهمة</string>
     <string name="title_activity_detial_announcement">تفاصيل الاعلان</string>
     <string name="title_activity_no_internet_connection">NoInternetConnection</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <string name="title_activity_news">NewsActivity</string>
-    <string name="title_activity_selected_news">SelectedNews</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_news">News</string>
+    <string name="title_activity_selected_news">Selected</string>
+    <string name="title_activity_about">About</string>
 </resources>
