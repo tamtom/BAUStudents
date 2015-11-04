@@ -4,6 +4,7 @@ package itdeveapps.baustudents;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,7 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
     private TextView d;
     private Button change;
     private Spinner li;
+    private TextView current_weather;
 
     public void showDialog() {
         dialogs = new Dialog(this);
@@ -98,6 +100,10 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
+        current_weather = (TextView) findViewById(R.id.current_weather);
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("weather_status", MODE_PRIVATE);
+        String status = prefs.getString("status", "");
+        current_weather.setText(status);
 
         img = (ImageView) findViewById(R.id.img);
         temp = (TextView) findViewById(R.id.temp);
@@ -136,7 +142,7 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
         dialog.setMessage("Loading...");
         dialog.show();
 
-        service.refreshWeather("Amman, Jordan");
+        service.refreshWeather("Al Balqa, Yarqa");
 
 
     }

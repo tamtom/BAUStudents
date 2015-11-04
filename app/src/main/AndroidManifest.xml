@@ -97,7 +97,13 @@
             android:label="@string/title_activity_no_internet_connection" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".NewsActivity"
+            android:label="@string/title_activity_news"></activity>
+        <activity
+            android:name=".SelectedNews"
+            android:label="@string/title_activity_selected_news"></activity>
     </application>
 
 </manifest>

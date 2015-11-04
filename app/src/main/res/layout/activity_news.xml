@@ -5,18 +5,16 @@
     android:background="@drawable/main_bg"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
+
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="itdeveapps.baustudents.AnnouncementMainActivity">
-
+    tools:context="itdeveapps.baustudents.NewsActivity">
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/lesview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:divider="#58f35f"
-        android:dividerHeight="1px" />
+        android:dividerHeight="1px"></ListView>
+
 </RelativeLayout>

@@ -90,6 +90,12 @@
             android:key="acdemy"
 
             android:title="الاكاديمية" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+
+            android:key="dean"
+
+            android:title="عمادة شؤون الطلبه" />
 
 
     </PreferenceCategory>

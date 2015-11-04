@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,25 +18,33 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class AnnouncementMainActivity extends AppCompatActivity {
+public class SelectedNews extends AppCompatActivity {
     ProgressDialog mProgressDialog;
-    private ArrayList<String> Titles;
-    private ArrayList<String> linksDiscription;
-    private ListView l;
-    private String url;
+    String[] values;
+    String url;
+    String url2;
+    private String[] linksDiscription;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anouncment_main);
-        l = (ListView) findViewById(R.id.listView);
-        new AddTitle().execute();
-        l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        setContentView(R.layout.activity_selected_news);
+        Bundle extras = getIntent().getExtras();
+
+
+        if (extras != null) {
+            url = extras.getString("url");
+
+        }
+        listView = (ListView) findViewById(R.id.lesview2);
+        new GetItems().execute();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                url = linksDiscription.get(position);
+
+                url2 = linksDiscription[position];
                 new showDesc().execute();
 
             }
@@ -47,7 +54,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_anouncment_main, menu);
+        getMenuInflater().inflate(R.menu.menu_selected_news, menu);
         return true;
     }
 
@@ -74,9 +81,9 @@ public class AnnouncementMainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mProgressDialog = new ProgressDialog(AnnouncementMainActivity.this);
+            mProgressDialog = new ProgressDialog(SelectedNews.this);
             // Set progressdialog title
-            mProgressDialog.setTitle("Getting Announcement");
+            mProgressDialog.setTitle("Getting news");
             // Set progressdialog message
             mProgressDialog.setMessage("Loading...");
             mProgressDialog.setIndeterminate(false);
@@ -87,15 +94,24 @@ public class AnnouncementMainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                Log.d("url", url);
-                Document doc = Jsoup.connect(url)
+
+                Document doc = Jsoup.connect(url2)
                         .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
                         .get();
-                Elements clas = doc.getElementsByClass("post-body");
-                Log.d("header ", clas.select("b").text());
-                header = clas.select("b").text();
-                conent = clas.select("i").text();
-                link = clas.select("a").toString();
+                Element e = doc.getElementById("ContentPlaceHolderBody_ContentBody_lbl_News");
+                e.getElementsByTag("p");
+                conent = e.text();
+
+                Elements h = doc.getElementsByClass("newsHead");
+                header = h.text();
+                Element s = doc.getElementById("ContentPlaceHolderBody_ContentBody_lblOtherPics");
+                Elements f = s.getElementsByTag("a");
+                for (Element ee : f) {
+                    if (ee.attr("abs:href").contains("pdf")) {
+                        link = ee.attr("abs:href");
+                        break;
+                    }
+                }
 
 
             } catch (IOException e) {
@@ -109,7 +125,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
 
             mProgressDialog.dismiss();
-            Intent i = new Intent(AnnouncementMainActivity.this, DetialAnnouncementActivity.class);
+            Intent i = new Intent(SelectedNews.this, DetialAnnouncementActivity.class);
             i.putExtra("header", header);
             i.putExtra("content", conent);
             i.putExtra("link", link);
@@ -119,13 +135,13 @@ public class AnnouncementMainActivity extends AppCompatActivity {
         }
     }
 
-    private class AddTitle extends AsyncTask<Void, Void, Void> {
+    private class GetItems extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mProgressDialog = new ProgressDialog(AnnouncementMainActivity.this);
+            mProgressDialog = new ProgressDialog(SelectedNews.this);
             // Set progressdialog title
-            mProgressDialog.setTitle("Getting Announcement");
+            mProgressDialog.setTitle("Getting news");
             // Set progressdialog message
             mProgressDialog.setMessage("Loading...");
             mProgressDialog.setIndeterminate(false);
@@ -136,21 +152,21 @@ public class AnnouncementMainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                linksDiscription = new ArrayList<>();
-                Titles = new ArrayList<>();
-                Document doc = Jsoup.connect("http://tamtomexperience.blogspot.com/")
+
+                Document document = Jsoup.connect(url)
                         .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
                         .get();
-                Elements clas = doc.getElementsByClass("post-title");
-                ArrayList<Elements> ee = new ArrayList<>();
-                for (Element e : clas) {
+                Elements e = document.select("a.bauliveportallinks");
+                values = new String[e.size()];
+                linksDiscription = new String[e.size()];
 
-                    ee.add(e.getElementsByAttribute("href"));
-                }
-                for (int i = 0; i < ee.size() && i < 20; i++) {
-                    Titles.add(ee.get(i).text());
-                    linksDiscription.add(ee.get(i).attr("abs:href"));
-
+                int i = 0;
+                for (Element s : e) {
+                    if (i < values.length) {
+                        values[i] = s.text();
+                        linksDiscription[i] = s.attr("abs:href");
+                    }
+                    i++;
                 }
 
             } catch (IOException e) {
@@ -162,15 +178,14 @@ public class AnnouncementMainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            String v[] = new String[Titles.size() > 20 ? 20 : Titles.size()];
-            v = Titles.toArray(v);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(AnnouncementMainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, v);
-            l.setAdapter(adapter);
-            if (v.length > 0)
-            mProgressDialog.dismiss();
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(SelectedNews.this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+            listView.setAdapter(adapter);
+            if (values.length > 0)
+                mProgressDialog.dismiss();
             else {
                 mProgressDialog.dismiss();
-                Intent i = new Intent(AnnouncementMainActivity.this, NoInternetConnectionActivity.class);
+                Intent i = new Intent(SelectedNews.this, NoInternetConnectionActivity.class);
                 finish();
                 startActivity(i);
 

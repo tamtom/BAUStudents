@@ -21,6 +21,22 @@ public class SettingsActivity extends PreferenceActivity {
         final CheckBoxPreference farm = (CheckBoxPreference) findPreference("farm");
         final CheckBoxPreference salt = (CheckBoxPreference) findPreference("salt");
         final CheckBoxPreference acdemy = (CheckBoxPreference) findPreference("acdemy");
+        final CheckBoxPreference dean = (CheckBoxPreference) findPreference("dean");
+        dean.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if (dean.isChecked()) {
+                    ParsePush.subscribeInBackground("dean");
+                    Toast.makeText(getBaseContext(), "Subscirbed!", Toast.LENGTH_SHORT).show();
+                } else {
+                    ParsePush.unsubscribeInBackground("dean");
+                    Toast.makeText(getBaseContext(), "UNSubscirbed!", Toast.LENGTH_SHORT).show();
+
+
+                }
+                return true;
+            }
+        });
         acdemy.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
