@@ -104,7 +104,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
                 Log.d("header ", clas.select("b").text());
                 header = clas.select("b").text();
                 conent = clas.select("i").text();
-                link = clas.select("a").toString();
+                link = clas.select("a").attr("abs:href");
 
 
             } catch (IOException e) {

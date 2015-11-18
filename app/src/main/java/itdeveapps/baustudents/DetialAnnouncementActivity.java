@@ -68,6 +68,7 @@ public class DetialAnnouncementActivity extends AppCompatActivity {
                 this.link.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.d("the link ", linkbutton);
                         Uri uri = Uri.parse(linkbutton);
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
