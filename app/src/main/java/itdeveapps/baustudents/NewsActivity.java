@@ -25,7 +25,7 @@ public class NewsActivity extends AppCompatActivity {
             actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
         }
         lv = (ListView) findViewById(R.id.lesview);
-        String[] values = new String[]{"القبو والتسجيل"
+        String[] values = new String[]{"القبول والتسجيل"
                 ,
                 "الدراسات العليا"
                 ,

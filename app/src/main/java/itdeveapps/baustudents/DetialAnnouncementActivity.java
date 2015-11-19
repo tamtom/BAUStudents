@@ -1,6 +1,7 @@
 package itdeveapps.baustudents;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -47,9 +48,13 @@ public class DetialAnnouncementActivity extends AppCompatActivity {
             br = new StringBuilder();
             String c = e.getString("content");
             String contentlong[] = c.split(" ");
-            if (contentlong.length > 7) {
+            int spitter = 6;
+            if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+                spitter = 8;
+            }
+            if (contentlong.length > spitter) {
                 for (int i = 0; i < contentlong.length; i++) {
-                    if (i % 7 == 0)
+                    if (i % spitter == 0)
                         br.append("\n");
                     br.append(contentlong[i] + " ");
                 }
