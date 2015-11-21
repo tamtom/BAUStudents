@@ -1,6 +1,5 @@
 package dataweather;
 
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,7 +47,7 @@ public class Forcast implements JSONPopulator {
             index = 0;
         codes[index] = data.optInt("code");
         days[index] = data.optString("day");
-        Log.d("Json days", days[index]);
+
         high[index] = data.optInt("high");
         low[index] = data.optInt("low");
         index++;

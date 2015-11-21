@@ -35,10 +35,10 @@
 
                 <ImageButton
                     android:id="@+id/avg_calc"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/avg" />
+                    android:background="@drawable/ic_calculator" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -59,14 +59,15 @@
 
                 <ImageButton
                     android:id="@+id/weather_btn"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/weather" />
+                    android:background="@drawable/ic_weather" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:text="حالة الطقس"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -93,10 +94,10 @@
 
                 <ImageButton
                     android:id="@+id/notes"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/note" />
+                    android:background="@drawable/ic_notes" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -118,10 +119,10 @@
 
                 <ImageButton
                     android:id="@+id/adsbutton"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/ads" />
+                    android:background="@drawable/ic_ads" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,10 +154,10 @@
 
                 <ImageButton
                     android:id="@+id/maps"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn_map" />
+                    android:background="@drawable/ic_maps" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -178,15 +179,16 @@
 
                 <ImageButton
                     android:id="@+id/news"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/news" />
+                    android:background="@drawable/ic_news" />
 
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
                     android:text="اخبار الجامعة"
                     android:textSize="18sp"
                     android:textStyle="bold" />

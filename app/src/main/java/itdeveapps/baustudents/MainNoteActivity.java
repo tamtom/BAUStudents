@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -100,8 +99,6 @@ public class MainNoteActivity extends AppCompatActivity {
             String content = notesFromDB.get(i).getContent();
             int mid = notesFromDB.get(i).getItemId();
 
-
-            //Log.v("IDs: " , String.valueOf(mid));
 
             MyNote myNote = new MyNote();
             myNote.setTitle(title);
@@ -216,7 +213,6 @@ public class MainNoteActivity extends AppCompatActivity {
 
                     int mid = finalHolder.myNote.getItemId();
 
-                    Log.v("MyId: ", String.valueOf(mid));
 
 
 //

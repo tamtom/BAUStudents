@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.parse.ParsePush;
@@ -19,6 +23,15 @@ public class SettingsActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preflay);
+        LinearLayout root = (LinearLayout) findViewById(android.R.id.list).getParent().getParent().getParent();
+        Toolbar bar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.tool_bar, root, false);
+        root.addView(bar, 0); // insert at top
+        bar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         final CheckBoxPreference it = (CheckBoxPreference) findPreference("it");
         final CheckBoxPreference science = (CheckBoxPreference) findPreference("science");
         final CheckBoxPreference eng = (CheckBoxPreference) findPreference("eng");
@@ -143,7 +156,7 @@ public class SettingsActivity extends PreferenceActivity {
         science.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                if (it.isChecked()) {
+                if (science.isChecked()) {
                     ParsePush.subscribeInBackground("science");
                     Toast.makeText(getBaseContext(), "Subscirbed!", Toast.LENGTH_SHORT).show();
                 } else {

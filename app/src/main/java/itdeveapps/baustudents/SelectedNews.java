@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -102,7 +101,7 @@ public class SelectedNews extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                Log.d("the link is ", url2 + "");
+
                 Document doc = Jsoup.connect(url2)
                         .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
                         .timeout(10000).get();
@@ -139,7 +138,6 @@ public class SelectedNews extends AppCompatActivity {
                 mProgressDialog.dismiss();
                 Intent i = new Intent(SelectedNews.this, DetialAnnouncementActivity.class);
                 i.putExtra("header", header);
-                Log.d("the header before aci", header + "");
                 i.putExtra("content", conent);
                 i.putExtra("link", link);
                 startActivity(i);

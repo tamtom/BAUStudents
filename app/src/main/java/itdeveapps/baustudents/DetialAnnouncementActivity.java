@@ -5,7 +5,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +30,6 @@ public class DetialAnnouncementActivity extends AppCompatActivity {
         if (e != null) {
             String head = e.getString("header");
             br = new StringBuilder();
-            Log.d("head is ", head + "");
             String headerlong[] = head.split(" ");
             if (headerlong.length > 6) {
                 for (int i = 0; i < headerlong.length; i++) {
@@ -65,7 +63,6 @@ public class DetialAnnouncementActivity extends AppCompatActivity {
             final String linkbutton = e.getString("link");
 
 
-            Log.d("link after", linkbutton + "");
             if (linkbutton != null) {
                 this.link.setVisibility(View.VISIBLE);
                 this.link.setText("attachment");
@@ -73,7 +70,7 @@ public class DetialAnnouncementActivity extends AppCompatActivity {
                 this.link.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.d("the link ", linkbutton);
+
                         Uri uri = Uri.parse(linkbutton);
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);

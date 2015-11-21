@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -112,28 +111,26 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     public double altrakomi() {
         double convert = cutHour * currentAvg;
-        Log.d("after convert : ", "" + convert);
+
         double pointInSemester = 0;
         for (int i = 0; i < 10; i++) {
             if (check_boxs[i].isChecked()) {
                 pointInSemester += Integer.parseInt(h_spinner[i].getSelectedItem().toString()) * points.get(new_spinner[i].getSelectedItem().toString());
             }
         }
-        Log.d("pointsemester : ", "" + pointInSemester);
+
         pointInSemester += convert;
         setOldMarks();
         double oldp = 0;
         for (int i = 0; i < oldMarks.length; i++) {
             oldp += oldMarks[i];
         }
-        Log.d("old marks", oldp + "");
 
         pointInSemester = pointInSemester - oldp;
-        Log.d("all Semester ", "" + pointInSemester);
-        Log.d("cutted hour 1", cutHour + "");
+
         cutHour -= getsumOldHour();
-        Log.d("cutted hour 2", cutHour + "");
-        Log.d("all hours", getsumAllHour() + "");
+
+
         return (pointInSemester / (getsumAllHour() + cutHour));
     }
 

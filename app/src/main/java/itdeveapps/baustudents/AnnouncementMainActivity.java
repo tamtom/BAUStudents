@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -89,6 +88,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
             // Set progressdialog message
             mProgressDialog.setMessage("Loading...");
             mProgressDialog.setIndeterminate(false);
+            mProgressDialog.setCancelable(false);
             // Show progressdialog
             mProgressDialog.show();
         }
@@ -96,12 +96,12 @@ public class AnnouncementMainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                Log.d("url", url);
+
                 Document doc = Jsoup.connect(url)
                         .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
                         .get();
                 Elements clas = doc.getElementsByClass("post-body");
-                Log.d("header ", clas.select("b").text());
+
                 header = clas.select("b").text();
                 conent = clas.select("i").text();
                 link = clas.select("a").attr("abs:href");
