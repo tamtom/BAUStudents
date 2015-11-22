@@ -22,6 +22,7 @@ import itdeveapps.baustudents.AnnouncementMainActivity;
 import itdeveapps.baustudents.CalculatorActivity;
 import itdeveapps.baustudents.MainActivity;
 import itdeveapps.baustudents.MainNoteActivity;
+import itdeveapps.baustudents.NewsActivity;
 import itdeveapps.baustudents.R;
 import itdeveapps.baustudents.WeatherActivity;
 
@@ -99,6 +100,8 @@ public class CustomReciver extends ParsePushBroadcastReceiver {
                 result = new Intent(context, WeatherActivity.class);
             else if (getOpen().equals("note"))
                 result = new Intent(context, MainNoteActivity.class);
+            else if (getOpen().equals("news"))
+                result = new Intent(context, NewsActivity.class);
             else
                 result = new Intent(context, MainActivity.class);
             if (open.equals("weather")) {
@@ -121,7 +124,7 @@ public class CustomReciver extends ParsePushBroadcastReceiver {
     }
 
     private void showNotification(String messege, String title, Context context, Intent intent) {
-        Log.d("notific", messege + "   " + title);
+
         int icon = R.drawable.notif_ic;
         int mNotificationId = 100;
         PendingIntent resultPendingIntent =

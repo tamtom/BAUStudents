@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#009688")));
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#43A047")));
         }
         newsBtn = (ImageButton) findViewById(R.id.news);
         newsBtn.setOnClickListener(new View.OnClickListener() {
