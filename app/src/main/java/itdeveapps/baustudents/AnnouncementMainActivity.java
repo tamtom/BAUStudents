@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -105,6 +106,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
                 header = clas.select("b").text();
                 conent = clas.select("i").text();
                 link = clas.select("a").attr("abs:href");
+                Log.d("the link is ", link);
 
 
             } catch (IOException e) {
@@ -121,6 +123,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
             Intent i = new Intent(AnnouncementMainActivity.this, DetialAnnouncementActivity.class);
             i.putExtra("header", header);
             i.putExtra("content", conent);
+            if (link != null)
             i.putExtra("link", link);
             startActivity(i);
 
@@ -133,6 +136,7 @@ public class AnnouncementMainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             mProgressDialog = new ProgressDialog(AnnouncementMainActivity.this);
+            mProgressDialog.setCancelable(false);
             // Set progressdialog title
             mProgressDialog.setTitle("Getting Announcement");
             // Set progressdialog message

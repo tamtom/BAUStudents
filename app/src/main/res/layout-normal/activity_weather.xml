@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="12 Deg"
+        android:text=""
         android:textColor="#fff"
         android:textSize="50sp" />
 

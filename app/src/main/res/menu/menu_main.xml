@@ -9,9 +9,15 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
+        android:id="@+id/important_sites"
+        android:orderInCategory="101"
+
+        android:title="مواقع مهمه"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/about"
         android:orderInCategory="110"
 
-        android:title="About"
+        android:title="مراسلة مطوّر التطبيق لأي اقتراح"
         app:showAsAction="never" />
 </menu>

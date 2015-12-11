@@ -52,7 +52,6 @@
 
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,24 +60,25 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/weather_btn"
+                    android:id="@+id/news"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/ic_weather" />
+                    android:background="@drawable/ic_news" />
 
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:text="حالة الطقس"
+                    android:layout_marginLeft="27dp"
+                    android:text="اخبار الجامعة"
                     android:textColor="#000"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
 
             </LinearLayout>
+
 
 
         </RelativeLayout>
@@ -187,25 +187,24 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/news"
+                    android:id="@+id/weather_btn"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/ic_news" />
+                    android:background="@drawable/ic_weather" />
 
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="27dp"
-                    android:text="اخبار الجامعة"
+                    android:layout_marginLeft="35dp"
+                    android:text="حالة الطقس"
                     android:textColor="#000"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
 
             </LinearLayout>
-
 
         </RelativeLayout>
 

@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -89,7 +90,9 @@ public class SelectedNews extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             mProgressDialog = new ProgressDialog(SelectedNews.this);
+            mProgressDialog.setCancelable(false);
             // Set progressdialog title
+            mProgressDialog.setCancelable(false);
             mProgressDialog.setTitle("Getting news");
             // Set progressdialog message
             mProgressDialog.setMessage("Loading...");
@@ -104,7 +107,7 @@ public class SelectedNews extends AppCompatActivity {
 
                 Document doc = Jsoup.connect(url2)
                         .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36")
-                        .timeout(10000).get();
+                        .timeout(150000).get();
                 Element e = doc.getElementById("ContentPlaceHolderBody_ContentBody_lbl_News");
                 e.getElementsByTag("p");
                 conent = e.text();
@@ -114,7 +117,9 @@ public class SelectedNews extends AppCompatActivity {
                 Element s = doc.getElementById("ContentPlaceHolderBody_ContentBody_lblOtherPics");
                 Elements f = s.getElementsByTag("a");
                 for (Element ee : f) {
-                    if (ee.attr("abs:href").contains("pdf")) {
+                    Log.d("doInBackground ", ee.toString());
+                    Log.d("lala", ee.attr("abs:href"));
+                    if (ee.attr("abs:href").toLowerCase().contains("pdf")) {
                         link = ee.attr("abs:href");
                         break;
                     }

@@ -44,33 +44,33 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="30dp"
-                    android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
 
-                    <ImageButton
-                        android:id="@+id/weather_btn"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/ic_weather" />
+            <ImageButton
+                android:id="@+id/news"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_news" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:text="حالة الطقس"
+            <TextView
 
-                        android:textColor="#000"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="اخبار الجامعة"
+
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
 
-                </LinearLayout>
-
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -172,33 +172,32 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="30dp"
-                    android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
 
-                    <ImageButton
-                        android:id="@+id/news"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/ic_news" />
+            <ImageButton
+                android:id="@+id/weather_btn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_weather" />
 
-                    <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="حالة الطقس"
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:text="اخبار الجامعة"
-
-                        android:textColor="#000"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
 
-                </LinearLayout>
+        </LinearLayout>
 
 
     </RelativeLayout>

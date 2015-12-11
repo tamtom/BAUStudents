@@ -108,7 +108,10 @@
             android:label="@string/title_activity_selected_news" />
         <activity
             android:name=".AboutActivity"
-            android:label="@string/title_activity_about"></activity>
+            android:label="@string/title_activity_about" />
+        <activity
+            android:name=".ImportantLinks"
+            android:label="@string/title_activity_important_links"></activity>
     </application>
 
 </manifest>

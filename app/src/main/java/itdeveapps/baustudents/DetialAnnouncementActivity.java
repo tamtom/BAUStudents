@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,7 @@ public class DetialAnnouncementActivity extends AppCompatActivity {
         content = (TextView) findViewById(R.id.contentd);
         link = (Button) findViewById(R.id.link);
         link.setVisibility(View.INVISIBLE);
+        Log.d("the link is ", "invisible");
         Bundle e = getIntent().getExtras();
         if (e != null) {
             String head = e.getString("header");
@@ -63,9 +65,10 @@ public class DetialAnnouncementActivity extends AppCompatActivity {
             final String linkbutton = e.getString("link");
 
 
-            if (linkbutton != null) {
+            if (linkbutton != null && linkbutton.contains("http")) {
                 this.link.setVisibility(View.VISIBLE);
                 this.link.setText("attachment");
+                Log.d("the link is ", linkbutton);
 
                 this.link.setOnClickListener(new View.OnClickListener() {
                     @Override

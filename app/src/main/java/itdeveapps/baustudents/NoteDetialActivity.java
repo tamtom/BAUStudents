@@ -19,6 +19,12 @@ public class NoteDetialActivity extends AppCompatActivity {
     private TextView title, date, content;
     private Button deleteButton;
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this, MainNoteActivity.class);
+        startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

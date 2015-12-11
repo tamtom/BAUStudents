@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.parse.ParsePushBroadcastReceiver;
 
@@ -51,14 +50,13 @@ public class CustomReciver extends ParsePushBroadcastReceiver {
         try {
             JSONObject json = new JSONObject(intent.getExtras().getString("com.parse.Data"));
 
-            Log.e("hellowWorld", "Push received: " + json);
+
 
             parseIntent = intent;
 
             parsePushJson(context, json);
 
         } catch (JSONException e) {
-            Log.e("parse exeption", "Push message json exception: " + e.getMessage());
         }
     }
 
@@ -104,19 +102,18 @@ public class CustomReciver extends ParsePushBroadcastReceiver {
                 result = new Intent(context, NewsActivity.class);
             else
                 result = new Intent(context, MainActivity.class);
-            if (open.equals("weather")) {
+            if (getOpen().equals("weather")) {
                 SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences("weather_status", 0).edit();
                 editor.putString("status", data.getString("status"));
 
-                editor.commit();
+                editor.apply();
                 Calendar calendar = Calendar.getInstance();
                 int day = calendar.get(Calendar.DAY_OF_WEEK);
-                Log.d("day", day + "");
-                Log.d("", "" + tusday);
+
                 if (ls.contains(day))
                     showNotification(messege, title, context, result);
             }
-            if (!open.equals("weather"))
+            if (!getOpen().equals("weather"))
                 showNotification(messege, title, context, result);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -145,12 +142,12 @@ public class CustomReciver extends ParsePushBroadcastReceiver {
         Notification notification = builder.build();
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(mNotificationId, notification);
+
     }
 
     @Override
     protected void onPushOpen(Context context, Intent intent) {
         super.onPushOpen(context, intent);
-        Log.d("onpush", "we are in");
 
 
     }

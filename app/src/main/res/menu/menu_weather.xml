@@ -6,7 +6,7 @@
 
         android:id="@+id/selectuni"
         android:orderInCategory="150"
-        android:title="اختر الجامعة"
+        android:title="اختر الفرع"
         app:showAsAction="always"
 
         />

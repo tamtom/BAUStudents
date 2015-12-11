@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = getSharedPreferences("first", MODE_PRIVATE).edit();
 
             editor.putInt("once", 1);
-            editor.commit();
+            editor.apply();
             new AlertDialog.Builder(this)
                     .setTitle("ضبط الاشعارات")
                     .setMessage("للحصول على افضل تجربه مع التطبيق يرجى ضبط الاعدادات التي تناسبك")
@@ -192,6 +192,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if (id == R.id.about) {
             startActivity(new Intent(this, AboutActivity.class));
+        }
+        if (id == R.id.important_sites) {
+            startActivity(new Intent(this, ImportantLinks.class));
         }
 
         return super.onOptionsItemSelected(item);

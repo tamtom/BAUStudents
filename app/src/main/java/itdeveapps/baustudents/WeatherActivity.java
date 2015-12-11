@@ -48,7 +48,7 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
         dialogs.setContentView(R.layout.select);
         change = (Button) dialogs.findViewById(R.id.change);
         li = (Spinner) dialogs.findViewById(R.id.uni);
-        dialogs.setCancelable(false);
+        dialogs.setCancelable(true);
         dialogs.show();
         change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +146,7 @@ public class WeatherActivity extends AppCompatActivity implements YahooServiceCa
 
         service = new YahooWeatherService(this);
         dialog = new ProgressDialog(this);
+        dialog.setCancelable(false);
         dialog.setMessage("Loading...");
         dialog.show();
 
